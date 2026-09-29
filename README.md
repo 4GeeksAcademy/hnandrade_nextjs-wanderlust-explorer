@@ -2,7 +2,7 @@
 
 Aplicación web para descubrir experiencias de viaje únicas en todo el mundo. Permite explorar un catálogo de 100 experiencias (aventura, cultura, gastronomía, bienestar y naturaleza), buscarlas por título, filtrarlas por categoría y destino, ver su detalle y guardarlas como favoritas.
 
-Live demo: (URL de Vercel)
+Live demo: https://hnandrade-nextjs-wanderlust-explore.vercel.app
 
 ## Stack
 
