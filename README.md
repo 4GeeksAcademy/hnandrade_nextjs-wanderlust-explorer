@@ -1,1 +1,0 @@
-# hnandrade_nextjs-wanderlust-explorer
