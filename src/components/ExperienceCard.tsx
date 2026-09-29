@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import type { MouseEvent } from "react";
+import HeartButton from "@/components/HeartButton";
 import type { Experience } from "@/types/experience";
 
 interface ExperienceCardProps {
@@ -13,12 +13,6 @@ interface ExperienceCardProps {
 
 export default function ExperienceCard({ experience, isFavorite, onToggleFavorite }: ExperienceCardProps) {
   const { id, title, destination, category, price, rating, imageUrl } = experience;
-
-  const handleFavoriteClick = (event: MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    event.stopPropagation();
-    onToggleFavorite(id);
-  };
 
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md">
@@ -35,27 +29,12 @@ export default function ExperienceCard({ experience, isFavorite, onToggleFavorit
         </span>
       </div>
 
-      <button
-        type="button"
-        onClick={handleFavoriteClick}
-        aria-label={isFavorite ? `Quitar ${title} de favoritos` : `Añadir ${title} a favoritos`}
-        aria-pressed={isFavorite}
-        className="absolute right-3 top-3 z-10 rounded-full bg-white/90 p-2 shadow hover:bg-white"
-      >
-        <svg
-          className={`h-5 w-5 ${isFavorite ? "fill-red-500 text-red-500" : "fill-none text-gray-700"}`}
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-          aria-hidden="true"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-          />
-        </svg>
-      </button>
+      <HeartButton
+        isFavorite={isFavorite}
+        onToggle={() => onToggleFavorite(id)}
+        label={title}
+        className="absolute right-3 top-3 z-10"
+      />
 
       <div className="flex flex-1 flex-col gap-2 p-4">
         <h3 className="text-base font-semibold text-gray-900">
